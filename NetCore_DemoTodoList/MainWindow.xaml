@@ -1,0 +1,32 @@
+﻿<Window x:Class="NetCore_DemoTodoList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetCore_DemoTodoList"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontSize="18" DataContext="{DynamicResource Main}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <DataGrid ItemsSource="{Binding Items}" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*" />
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button FontFamily="Segoe UI Symbol" Content="&#xE106;" Command="{Binding DeleteCommand}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Title : " Margin="5,0" />
+            <TextBox Margin="5,0" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Add" Margin="5,0" Command="{Binding AddCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

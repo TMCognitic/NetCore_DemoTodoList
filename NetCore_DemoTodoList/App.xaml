@@ -1,0 +1,10 @@
+﻿<Application x:Class="NetCore_DemoTodoList.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NetCore_DemoTodoList"
+             xmlns:vm="clr-namespace:NetCore_DemoTodoList.ViewModels"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <vm:MainViewModel x:Key="Main" />
+    </Application.Resources>
+</Application>
